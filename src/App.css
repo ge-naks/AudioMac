@@ -1,0 +1,52 @@
+#root {
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  --blackslate: #1A1A1D;
+  --greyslate: #4E4E50;
+  --deepmaroon: #6f2232;
+  --dragonfruit: #950740;
+  --brightred: #C3073F;
+
+
+}
+
+
+.title{
+  color: var(--dragonfruit);
+  animation: fadeInAnimation ease 3s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+.sub{
+  font-size: max(1.9vw, 2.5vh);
+  animation: fadeInAnimation ease 1.5s;
+  animation-delay: 1000ms;
+  animation-iteration-count: 1;
+  animation-fill-mode: both;
+}
+
+.rere{
+  animation: fadeInAnimation ease 3s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+.titleButton{
+  animation: fadeInAnimation ease 1.5s;
+  animation-delay: 1000ms;
+  animation-iteration-count: 1;
+  animation-fill-mode: both;
+}
+
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0;
+    transform: translateY(30%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
