@@ -8,8 +8,8 @@ let [realAns, setRealAns] = useState(0);
 let [givenAns, setGivenAns] = useState(-1)
 let [numCorrect, setNumCorrect] = useState(0);
 let [msg, setMsg] = useState('')
-
-  let operators = ['plus', 'minus', 'times', 'divided by']
+let [answerGiven, setAnswerGiven] = useState(false)
+let operators = ['plus', 'minus', 'times', 'divided by']
 
 function genNumber() {
   let num1Addition = Math.floor(Math.random() * (100 - 2 + 1)) + 2;
@@ -71,6 +71,7 @@ function speak(num1, num2, i) {
     recognition.start();
 
     recognition.onresult = (event) => {
+      setAnswerGiven(true)
       const wordToNumber = {
       "zero": 0, "one": 1, "two": 2, "three": 3, "four": 4,
       "five": 5, "six": 6, "seven": 7, "eight": 8, "nine": 9
@@ -85,7 +86,7 @@ function speak(num1, num2, i) {
     if(numericValue === realAns){
       right.play()
       console.log("right")
-      setNumCorrect(numCorrect+1)
+      setNumCorrect(numCorrect + 1)
     }else{
       wrong.play()
       console.log("wrong")
@@ -106,6 +107,7 @@ function speak(num1, num2, i) {
   }
 
   useEffect(() => {
+    let wrong = new Audio(wrongSound);
     if (realAns !== 0) {
       const delay = 3000; // Adjust the delay time in milliseconds (e.g., 2000ms = 2 seconds)
       setMsg('Speaking...')
@@ -114,12 +116,16 @@ function speak(num1, num2, i) {
         setMsg('Listening...')
       }, delay);
 
+
       return () => {
         clearTimeout(timeoutId); // Clear the timeout if the dependency changes before the delay is reached 
         setMsg('')
       };
+
     }
   }, [realAns]);
+
+
 
 function main(){
   const duration = 3000
