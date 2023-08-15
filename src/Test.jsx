@@ -40,7 +40,7 @@ function Test() {
     }
 
     if (realAns === 0) {
-      setTime(10);
+      setTime(120);
       setTimerId(setInterval(countdown, 1000)); // Set the timerId
     }
 
